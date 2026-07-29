@@ -1,8 +1,0 @@
-.vscode
-logs
-node_modules
-output
-test
-.env
-.eslint*
-jest.config.js
