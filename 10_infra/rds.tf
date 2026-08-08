@@ -21,7 +21,7 @@ resource "aws_db_parameter_group" "mysql_standalone_parametergroup" {
 # RDS option group
 # ---------------------------------------------
 resource "aws_db_option_group" "mysql_standalone_optiongroup" {
-  name                 = "${var.project}-${var.environment}-mysql-standalone-optiongroup"
+  name = "${var.project}-${var.environment}-mysql-standalone-optiongroup"
   engine_name          = "mysql"
   major_engine_version = "8.0"
 }
@@ -50,14 +50,14 @@ resource "aws_db_subnet_group" "mysql_standalone_subnetgroup" {
 # ---------------------------------------------
 resource "aws_db_instance" "mysql_standalone" {
   engine         = "mysql"
-  engine_version = "8.0.28"
+  engine_version = "8.0.43"
 
   identifier = "${var.project}-${var.environment}-mysql-standalone"
 
   username = var.username
   password = var.password
 
-  instance_class = "db.t2.micro"
+  instance_class = "db.t3.micro"
 
   allocated_storage     = 20
   max_allocated_storage = 50
