@@ -41,6 +41,11 @@ jobs:
           echo "Repository: $GITHUB_REPOSITORY"
           echo "Ref: $GITHUB_REF"
           echo "Workflow: $GITHUB_WORKFLOW"
+      - name: Show AWS role ARN
+        run: |
+          echo "${AWS_IAM_ROLE_ARN}" | sed 's#arn:aws:iam::[0-9]*:role/#arn:aws:iam::************:role/#'
+        env:
+          AWS_IAM_ROLE_ARN: ${{ secrets.AWS_IAM_ROLE_ARN }}
       - name: Configure AWS credential
         uses: aws-actions/configure-aws-credentials@v6
         with:
