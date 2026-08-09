@@ -46,6 +46,11 @@ jobs:
           echo "${AWS_IAM_ROLE_ARN}" | sed 's#arn:aws:iam::[0-9]*:role/#arn:aws:iam::************:role/#'
         env:
           AWS_IAM_ROLE_ARN: ${{ secrets.AWS_IAM_ROLE_ARN }}
+      - name: Configure AWS credentials
+        uses: aws-actions/configure-aws-credentials@v6
+        with:
+          aws-region: ${{ env.AWS_REGION }}
+          role-to-assume: ${{ secrets.AWS_IAM_ROLE_ARN }}
       - name: Configure AWS credential
         uses: aws-actions/configure-aws-credentials@v6
         with:
