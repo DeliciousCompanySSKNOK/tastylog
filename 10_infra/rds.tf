@@ -21,7 +21,7 @@ resource "aws_db_parameter_group" "mysql_standalone_parametergroup" {
 # RDS option group
 # ---------------------------------------------
 resource "aws_db_option_group" "mysql_standalone_optiongroup" {
-  name = "${var.project}-${var.environment}-mysql-standalone-optiongroup"
+  name                 = "${var.project}-${var.environment}-mysql-standalone-optiongroup"
   engine_name          = "mysql"
   major_engine_version = "8.0"
 }
@@ -72,7 +72,7 @@ resource "aws_db_instance" "mysql_standalone" {
   availability_zone      = "ap-northeast-1a"
   port                   = 3306
 
-  name                    = "tastylog"
+  name                       = "tastylog"
   parameter_group_name       = aws_db_parameter_group.mysql_standalone_parametergroup.name
   option_group_name          = aws_db_option_group.mysql_standalone_optiongroup.name
   backup_window              = "04:00-05:00"
